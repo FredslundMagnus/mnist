@@ -1,20 +1,14 @@
-import argparse
-import sys
 from os.path import join
 
-import click
+import hydra
 import matplotlib.pyplot as plt
 import torch
 from model import MyAwesomeModel
 from torch.nn import MSELoss
 from torch.optim import Adam
 from torch.utils.data import DataLoader
-
-
-@click.group()
-def cli():
-    pass
-
+from omegaconf import DictConfig
+import os
 
 def accuracy(model, data, labels):
     out = model(data)
@@ -27,22 +21,23 @@ def load(
     train_data: str, train_label: str, test_data: str, test_label: str
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
     return (
-        torch.load(join("data", "processed", train_data)),
-        torch.load(join("data", "processed", train_label)),
-        torch.load(join("data", "processed", test_data)),
-        torch.load(join("data", "processed", test_label)),
+        torch.load(join("..", "..", "..", "data", "processed", train_data)),
+        torch.load(join("..", "..", "..", "data", "processed", train_label)),
+        torch.load(join("..", "..", "..", "data", "processed", test_data)),
+        torch.load(join("..", "..", "..", "data", "processed", test_label)),
     )
 
-
-@click.command()
-@click.option("--lr", default=1e-3, help="learning rate to use for training")
-@click.option("--epochs", default=5, help="number of epochs used for training")
-def train(lr, epochs):
+@hydra.main(config_path="../../config", config_name="config.yaml", version_base="1.1")
+def train(cfg: DictConfig):
+    model_cfg = cfg.model_conf
+    training_cfg = cfg.training_conf
+    lr = training_cfg["lr"]
+    epochs = training_cfg["epochs"]
     print("Training day and night")
     print(f"{lr = }")
     print(f"{epochs = }")
 
-    model = MyAwesomeModel()
+    model = MyAwesomeModel(model_cfg)
     train_data, train_label, test_data, test_label = load(
         "train_data.tensor",
         "train_labels.tensor",
@@ -73,8 +68,6 @@ def train(lr, epochs):
     plt.savefig(join("reports", "figures", "training_curve.png"))
 
 
-cli.add_command(train)
-
 
 if __name__ == "__main__":
-    cli()
+    train()
