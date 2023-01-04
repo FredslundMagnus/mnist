@@ -140,7 +140,7 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: C:\Users\magnu\Documents\dtu\MLOps\exercises\testpackage\outputs\2023-01-04\16-04-47
+    output_dir: C:\Users\magnu\Documents\dtu\MLOps\exercises\testpackage\outputs\2023-01-04\16-10-28
     choices:
       training_conf: training_conf
       model_conf: model_conf

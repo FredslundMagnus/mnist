@@ -63,9 +63,11 @@ def train(cfg: DictConfig):
             history[epoch] += loss.detach().numpy()
         val[epoch] = accuracy(model, test_data, test_label)
         print(epoch, history[epoch], val[epoch])
-    torch.save(model, join("models", "trained_model.pt"))
+    torch.save(model, join("..", "..", "..", "models", "trained_model.pt"))
+    torch.save(model, "trained_model.pt")
     plt.plot(history)
-    plt.savefig(join("reports", "figures", "training_curve.png"))
+    plt.savefig(join("..", "..", "..", "reports", "figures", "training_curve.png"))
+    plt.savefig("training_curve.png")
 
 
 
