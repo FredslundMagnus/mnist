@@ -9,6 +9,10 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from omegaconf import DictConfig
 import os
+import wandb
+
+wandb.init(project="test-project", entity="fredslund")
+
 
 def accuracy(model, data, labels):
     out = model(data)
@@ -29,8 +33,9 @@ def load(
 
 @hydra.main(config_path="../../config", config_name="config.yaml", version_base="1.1")
 def train(cfg: DictConfig):
-    model_cfg = cfg.model_conf
-    training_cfg = cfg.training_conf
+    model_cfg: dict = cfg.model_conf
+    training_cfg: dict = cfg.training_conf
+    wandb.config ={**model_cfg, **training_cfg}
     lr = training_cfg["lr"]
     epochs = training_cfg["epochs"]
     print("Training day and night")
@@ -38,6 +43,8 @@ def train(cfg: DictConfig):
     print(f"{epochs = }")
 
     model = MyAwesomeModel(model_cfg)
+
+    wandb.watch(model)
     train_data, train_label, test_data, test_label = load(
         "train_data.tensor",
         "train_labels.tensor",
@@ -61,6 +68,7 @@ def train(cfg: DictConfig):
             optimizer.step()
             optimizer.zero_grad()
             history[epoch] += loss.detach().numpy()
+            wandb.log({"loss": loss})
         val[epoch] = accuracy(model, test_data, test_label)
         print(epoch, history[epoch], val[epoch])
     torch.save(model, join("..", "..", "..", "models", "trained_model.pt"))

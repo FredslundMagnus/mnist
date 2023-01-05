@@ -1,0 +1,50 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.10.8",
+    "heartbeatAt": "2023-01-05T10:13:01.249915",
+    "startedAt": "2023-01-05T10:12:59.374129",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\magnu\\Documents\\dtu\\MLOps\\exercises\\testpackage\\src\\models\\train_model.py",
+    "codePath": "src\\models\\train_model.py",
+    "git": {
+        "remote": "https://github.com/FredslundMagnus/mnist.git",
+        "commit": "c64bd74254a348800bbf74e05cbf26ae370ba2ad"
+    },
+    "email": "s183905@student.dtu.dk",
+    "root": "C:/Users/magnu/Documents/dtu/MLOps/exercises/testpackage",
+    "host": "Magnus-Fredslund",
+    "username": "magnu",
+    "executable": "C:\\Users\\magnu\\anaconda3\\envs\\mlops02\\python.exe",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 2300.0,
+        "min": 0.0,
+        "max": 2400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2300.0,
+            "min": 0.0,
+            "max": 2400.0
+        }
+    ],
+    "disk": {
+        "total": 190.01952743530273,
+        "used": 175.76849365234375
+    },
+    "gpu": "NVIDIA GeForce 930MX",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce 930MX",
+            "memory_total": 2147483648
+        }
+    ],
+    "memory": {
+        "total": 7.8702239990234375
+    }
+}
