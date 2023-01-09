@@ -24,8 +24,8 @@ repos:
         # entry: autoflake
         # language: python
         # files: src -r --in-place --remove-unused-variables
-        # args:
-        # - -r
-        # - --in-place
+        args:
+        - -r
+        - --in-place
         # # - --remove-all-unused-imports
         # - --remove-unused-variables
