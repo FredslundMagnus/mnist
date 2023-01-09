@@ -23,7 +23,7 @@ repos:
         name: autoflake
         entry: autoflake
         language: python
-        files: src
+        files: .
         args:
         - "-r"
         - "--in-place"
