@@ -1,4 +1,4 @@
-name: "Run tests"
+name: "iSort"
 
 on:
   push:
@@ -30,6 +30,6 @@ jobs:
       with:
         requirementsFiles: "requirements.txt requirements-tests.txt"
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}

@@ -1,4 +1,4 @@
-name: "Run tests"
+name: "Flake8"
 
 on:
   push:
@@ -27,6 +27,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+    - name: flake8 Lint
+      uses: py-actions/flake8@v2
+      with:
+        max-line-length: "100"
+        path: "src"
+        # ignore: "F401"
+        # exclude: "src/ignoreme.py"
+        # plugins: "flake8-bugbear==22.1.11 flake8-black"
