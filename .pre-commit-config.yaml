@@ -24,7 +24,7 @@ repos:
         language: python
         "types": [python]
         require_serial: true
-        files: \.py$
+        files: \.py
         args:
         - "--in-place"
         - "--expand-star-imports"
