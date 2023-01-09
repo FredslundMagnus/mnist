@@ -25,6 +25,7 @@ repos:
         language: python
         files: /
         args:
+        - "."
         - "-r"
         - "--in-place"
         - "--remove-all-unused-imports"
