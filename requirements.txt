@@ -12,3 +12,5 @@ torch
 hydra-core
 omegaconf
 wandb
+dvc
+"dvc[gdrive]"
