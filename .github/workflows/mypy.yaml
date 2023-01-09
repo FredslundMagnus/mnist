@@ -51,4 +51,4 @@ jobs:
         pip install -r requirements_tests.txt
         pip install mypy
         pip install data-science-types
-        mypy --install-types src
+        mypy --install-types --non-interactive src
