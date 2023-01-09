@@ -25,10 +25,11 @@ repos:
         language: python
         "types": [python]
         require_serial: true
-        files: src
+        # files: src
         args:
-        - "-r"
         - "--in-place"
         - "--expand-star-imports"
         - "--remove-all-unused-imports"
         - "--remove-unused-variables"
+        - "-r"
+        - "src"
