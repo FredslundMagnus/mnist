@@ -25,7 +25,7 @@ repos:
         language: python
         # "types": [python]
         # require_serial: true
-        files: src
+        files: src/
         args:
         - "-r"
         - "--in-place"
