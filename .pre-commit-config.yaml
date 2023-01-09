@@ -22,7 +22,7 @@ repos:
     -   id: autoflake
         # name: autoflake
         # entry: autoflake
-        # language: python
+        language: python
         files: ./src/models/train_model.py
         args:
         - -r
