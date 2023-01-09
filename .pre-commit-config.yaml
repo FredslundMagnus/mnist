@@ -23,9 +23,8 @@ repos:
         name: autoflake
         entry: autoflake
         language: python
-        files: /.py$
+        files: src
         args:
-        - .
         - -r
         - --in-place
         - --remove-all-unused-imports
