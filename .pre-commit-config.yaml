@@ -20,11 +20,11 @@ repos:
     hooks:
     -   id: autoflake
         name: autoflake
-        entry: autoflake
+        entry: bash -c 'autoflake "$@"; git add -u' --
         language: python
         "types": [python]
         require_serial: true
-        files: \.py
+        files: \.py$
         args:
         - "--in-place"
         - "--expand-star-imports"
