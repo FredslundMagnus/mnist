@@ -3,13 +3,13 @@ from os.path import join
 import hydra
 import matplotlib.pyplot as plt
 import torch
-from model import MyAwesomeModel
 from omegaconf import DictConfig
 from torch.nn import MSELoss
 from torch.optim import Adam
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Dataset
 
 import wandb
+from src.models.model import MyAwesomeModel
 
 wandb.init(project="test-project", entity="fredslund")
 
@@ -55,9 +55,8 @@ def train(cfg: DictConfig):
     print(train_data.shape, train_label.shape)
     optimizer = Adam(model.parameters(), lr=lr)
     loss_fn = MSELoss()
-    train_loader = DataLoader(
-        list(zip(train_data, train_label)), batch_size=100, shuffle=True
-    )
+    dataset: Dataset = list(zip(train_data, train_label))  # type: ignore
+    train_loader: DataLoader = DataLoader(dataset, batch_size=100, shuffle=True)
 
     history = [0] * epochs
     val = [0] * epochs
@@ -74,7 +73,7 @@ def train(cfg: DictConfig):
         print(epoch, history[epoch], val[epoch])
     torch.save(model, join("..", "..", "..", "models", "trained_model.pt"))
     torch.save(model, "trained_model.pt")
-    plt.plot(history)
+    plt.plot(range(len(history)), history)
     plt.savefig(join("..", "..", "..", "reports", "figures", "training_curve.png"))
     plt.savefig("training_curve.png")
 
