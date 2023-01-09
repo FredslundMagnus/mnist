@@ -20,16 +20,17 @@ repos:
     rev: v2.0.0
     hooks:
     -   id: autoflake
-        name: autoflake
+        # name: autoflake
         entry: autoflake
         language: python
-        "types": [python]
-        require_serial: true
-        # files: src
+        # "types": [python]
+        # require_serial: true
+        files: src
         args:
+        - "-r"
         - "--in-place"
-        - "--expand-star-imports"
+        # - "--expand-star-imports"
         - "--remove-all-unused-imports"
         - "--remove-unused-variables"
         - "-r"
-        - "src"
+        # - "src"
