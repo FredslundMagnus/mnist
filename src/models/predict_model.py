@@ -1,14 +1,7 @@
-import argparse
-import sys
 from os.path import join
 
 import click
-import matplotlib.pyplot as plt
 import torch
-from model import MyAwesomeModel
-from torch.nn import MSELoss
-from torch.optim import Adam
-from torch.utils.data import DataLoader
 import numpy as np
 
 
@@ -39,11 +32,15 @@ def predict(model_checkpoint):
     model = torch.load(model_checkpoint)
     test_data, test_label = load("test_data.tensor", "test_labels.tensor")
     print(f"Accuracy: {accuracy(model, test_data, test_label):%}")
-    data:dict[int, np.ndarray] = np.load("data/example_images.npy", allow_pickle=True).item()
-    data: torch.Tensor = torch.stack(tuple([torch.as_tensor(img) for img in data.values()]))
+    data: dict[int, np.ndarray] = np.load(
+        "data/example_images.npy", allow_pickle=True
+    ).item()
+    data: torch.Tensor = torch.stack(
+        tuple([torch.as_tensor(img) for img in data.values()])
+    )
     print(data.shape)
     result = model(data.reshape(10, -1)).argmax(axis=1)
-    print("Prediction:",[i.item() for i in result])
+    print("Prediction:", [i.item() for i in result])
 
 
 cli.add_command(predict)
