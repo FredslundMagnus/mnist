@@ -7,7 +7,7 @@ on:
     branches: [ master, main ]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref }}-flake8
   cancel-in-progress: true
 
 jobs:

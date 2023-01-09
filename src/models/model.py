@@ -1,5 +1,5 @@
-from torch import nn
 from omegaconf import DictConfig
+from torch import nn
 
 
 class MyAwesomeModel(nn.Module):

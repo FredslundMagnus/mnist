@@ -1,8 +1,8 @@
 from os.path import join
 
 import click
-import torch
 import numpy as np
+import torch
 
 
 @click.group()

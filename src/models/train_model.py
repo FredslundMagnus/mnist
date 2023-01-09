@@ -1,14 +1,15 @@
+import os
 from os.path import join
 
 import hydra
 import matplotlib.pyplot as plt
 import torch
 from model import MyAwesomeModel
+from omegaconf import DictConfig
 from torch.nn import MSELoss
 from torch.optim import Adam
 from torch.utils.data import DataLoader
-from omegaconf import DictConfig
-import os
+
 import wandb
 
 wandb.init(project="test-project", entity="fredslund")
@@ -31,11 +32,12 @@ def load(
         torch.load(join("..", "..", "..", "data", "processed", test_label)),
     )
 
+
 @hydra.main(config_path="../../config", config_name="config.yaml", version_base="1.1")
 def train(cfg: DictConfig):
     model_cfg: dict = cfg.model_conf
     training_cfg: dict = cfg.training_conf
-    wandb.config ={**model_cfg, **training_cfg}
+    wandb.config = {**model_cfg, **training_cfg}
     lr = training_cfg["lr"]
     epochs = training_cfg["epochs"]
     print("Training day and night")
@@ -76,7 +78,6 @@ def train(cfg: DictConfig):
     plt.plot(history)
     plt.savefig(join("..", "..", "..", "reports", "figures", "training_curve.png"))
     plt.savefig("training_curve.png")
-
 
 
 if __name__ == "__main__":
