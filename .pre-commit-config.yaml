@@ -23,7 +23,7 @@ repos:
         # name: autoflake
         # entry: autoflake
         # language: python
-        files: src -r --in-place --remove-unused-variables
+        # files: src -r --in-place --remove-unused-variables
         # args:
         # - -r
         # - --in-place
