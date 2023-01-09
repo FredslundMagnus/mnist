@@ -20,11 +20,9 @@ repos:
     rev: v2.0.0
     hooks:
     -   id: autoflake
-        # name: autoflake
+        name: autoflake
         entry: autoflake
         language: python
-        # "types": [python]
-        # require_serial: true
         files: src/.py$
         args:
         - "-r"
