@@ -22,11 +22,14 @@ train_data, train_label, test_data, test_label = load(
     "test_data.tensor",
     "test_labels.tensor",
 )
-assert len(train_data) == 40000
-assert len(train_label) == 40000
-assert len(test_data) == 5000
-assert len(test_label) == 5000
-assert tuple(train_data.shape[1:]) == (28 * 28,)
-assert tuple(test_data.shape[1:]) == (28 * 28,)
-assert all([int(a.item()) != 0 for a in train_label.sum(axis=0)])
-assert all([int(a.item()) != 0 for a in test_label.sum(axis=0)])
+
+
+def test_datas():
+    assert len(train_data) == 40000
+    assert len(train_label) == 40000
+    assert len(test_data) == 5000
+    assert len(test_label) == 5000
+    assert tuple(train_data.shape[1:]) == (28 * 28,)
+    assert tuple(test_data.shape[1:]) == (28 * 28,)
+    assert all([int(a.item()) != 0 for a in train_label.sum(axis=0)])
+    assert all([int(a.item()) != 0 for a in test_label.sum(axis=0)])
