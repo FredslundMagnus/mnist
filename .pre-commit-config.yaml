@@ -23,9 +23,9 @@ repos:
         # name: autoflake
         # entry: autoflake
         # language: python
-        files: ./src/models/train_model.py -r --in-place --remove-unused-variables
+        files: ./src/models/train_model.py
         args:
         - -r
         - --in-place
-        # # - --remove-all-unused-imports
-        # - --remove-unused-variables
+        - --remove-all-unused-imports
+        - --remove-unused-variables
