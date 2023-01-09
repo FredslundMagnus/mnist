@@ -11,3 +11,4 @@ matplotlib
 torch
 hydra-core
 omegaconf
+wandb
