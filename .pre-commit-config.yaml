@@ -25,8 +25,9 @@ repos:
         language: python
         "types": [python]
         require_serial: true
-        files: \.py
+        files: src
         args:
+        - "-r"
         - "--in-place"
         - "--expand-star-imports"
         - "--remove-all-unused-imports"
