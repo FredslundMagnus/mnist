@@ -13,4 +13,4 @@ hydra-core
 omegaconf
 wandb
 dvc
-"dvc[gdrive]"
+dvc[gdrive]
