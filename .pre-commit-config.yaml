@@ -16,11 +16,12 @@ repos:
     rev: 5.11.2
     hooks:
       - id: isort
--   repo: local
+-   repo: https://github.com/PyCQA/autoflake
+    rev: v2.0.0
     hooks:
     -   id: autoflake
         name: autoflake
-        entry: bash -c 'autoflake "$@"; git add -u' --
+        entry: autoflake
         language: python
         "types": [python]
         require_serial: true
