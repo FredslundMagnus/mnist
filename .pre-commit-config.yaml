@@ -26,7 +26,6 @@ repos:
 #         files: ./src/models/train_model.py
 #         args:
 #         - -r
-#         - -v
 #         - --in-place
 #         - --remove-all-unused-imports
 #         - --remove-unused-variables
