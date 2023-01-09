@@ -16,17 +16,17 @@ repos:
     rev: 5.11.2
     hooks:
       - id: isort
--   repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.0
-    hooks:
-    -   id: autoflake
-        # name: autoflake
-        # entry: autoflake
-        language: python
-        files: ./src/models/train_model.py
-        args:
-        - -r
-        - -v
-        - --in-place
-        - --remove-all-unused-imports
-        - --remove-unused-variables
+# -   repo: https://github.com/PyCQA/autoflake
+#     rev: v2.0.0
+#     hooks:
+#     -   id: autoflake
+#         # name: autoflake
+#         # entry: autoflake
+#         language: python
+#         files: ./src/models/train_model.py
+#         args:
+#         - -r
+#         - -v
+#         - --in-place
+#         - --remove-all-unused-imports
+#         - --remove-unused-variables
