@@ -50,6 +50,7 @@ jobs:
         pip install -r requirements.txt
         pip install -r requirements_tests.txt
         pip install mypy
-        mypy --install-types
         pip install data-science-types
+        mypy src
+        mypy --install-types
         mypy src
